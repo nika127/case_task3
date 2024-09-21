@@ -1,0 +1,11 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.body }}</p>
+<h2>Комментарии:</h2>
+{% for comment in post.comments.all %}
+    <p>{{ comment.body }} - {{ comment.author }}</p>
+{% endfor %}
+<form method="post">
+    {% csrf_token %}
+    <textarea name="comment" required></textarea>
+    <button type="submit">Добавить комментарий</button>
+</form>
